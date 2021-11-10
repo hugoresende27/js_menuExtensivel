@@ -25,126 +25,128 @@
 /*alinhar conteudos ao centro*/
 body
 {
-    background-image: linear-gradient(90deg, #097205, #165502);
-   font-family: 'Lato',sans-serif;
+    background-image: linear-gradient(
+        to bottom,/*ESTE LINEAR GRADIENT VAI DIVIDIR O ECRA AO MEIO 50% HORIZONTAL, 1 COR EM CADA METADE*/
+        #eafbff 0%,
+        #eafbff 50%,
+        #097205 50%,
+        #165502 100%  );
+   font-family: 'Permanent Marker',sans-serif;
+   /* font-size: 1.5rem; */
     display: flex;          /*coloca tudo em linha*/
-   flex-direction: column; /*coloca tudo em coluna*/
+   /*flex-direction: column; /*coloca tudo em coluna*/
     align-items: center;    /*alinha horizontalmente*/
     justify-content: center;/*alinha tudo verticalmente com uso de height:100vh*/
-  /* height: 100vh;*/
+   height: 100vh;
     /*overflow: hidden; /*BARRA DE SCROLL DOWN, HIDDEN ESCONDIDA*/
     margin: 0;
     overflow-x: hidden; /*REMOVER BARRA DE SCROLL HORIZONTAL*/
     padding: 20px;
 }
-h1{
-    margin: 50px 0 30px;
-    text-align: center;
-}
-.faq-main{
-    max-width: 600px;
-    margin: 0 auto;
-}
 
-.faq{
-    background-color: transparent;
-    border: 1px solid #9fa48a;
-    border-radius: 10px;
-    margin: 20px 0;
-    padding: 30px;
-    position: relative;
-    overflow: hidden;
-    transition: 0.3s ease;
-}
-.faq.ativo{
-    background-color: darkgoldenrod;
-    box-shadow: 0 8px 6px rgba(0,0,0,0.1), 0 3px 6px rgba(0,0,0,0.1);
-}
-
-.faq.ativo::before,
-.faq.ativo::after{
-    content: '\f075';
-    font-family: 'Font Awesome 6 Free';
-    color: #2ecc71;
-    font-size: 7rem;/*7 vezes o tamanho do root, 16px iniciais*/
-    position: absolute;
-    opacity: 0.4;
-    top: 20px;
-    left: 20px;
-    z-index: 0;
-}
-.faq.ativo::before{
-    color: #3498db;
-    top: -10px;
-    left: -30px;
-    transform: rotateY(180deg);
-}
-.faq-titulo{
-    margin: 0 35px 0 0;
-}
-.faq-texto{
-    display: none;/*PARA AS RESPOSTAS FICAREM ESCONDIDAS*/
-    margin: 30px 0 0;
-}
-.faq.ativo .faq-texto{
-    display: block;
-}
-
-.faq-toggle{
-    background-color: transparent;
-    border: 0;
-    cursor: pointer;
+nav {
+    background-color: #fff;
+    padding: 10px;
+    width: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
-    padding: 0;
-    position: absolute;
-    top: 30px;
-    right: 30px;
-    height: 30px;
-    width: 30px;    
-    border-radius: 50%;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    transition: width 0.6s linear;
 }
 
-.faq-toggle:focus{
+nav.ativo{
+    width: 380px;
+}
+
+nav ul{
+    display: flex;/*COLOCA A LISTA EM LINHA HORIZONTAL*/
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 0;
+    transition: width 0.6s linear;
+}
+
+nav.ativo ul{
+    width: 100%;
+}
+
+nav ul li{
+    transform: rotateY(0deg);
+    opacity: 0;
+    transition: transform 0.6s linear, opacity 0.6s linear;
+}
+
+nav.ativo ul li{
+    opacity: 1;
+    transform: rotateY(360deg);
+}
+
+nav ul a{
+    position: relative;
+    color: goldenrod;
+    text-shadow:1px 1px 2px #171a13;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+
+
+.icone{
+    background-color: #fff;
+    border: 0;
+    cursor: pointer;
+    padding: 0px;
+    position: relative;
+    height: 30px;
+    width:30px;
+}
+.icone:focus{
     outline: 0;
 }
 
-.faq-toggle .fa-times{
-    display: none;
-}
-.faq.ativo .faq-toggle .fa-times{
-    display:block;
-    color: #fff;
-}
-.faq.ativo .faq-toggle .fa-chevron-down{
-    display:none;
-}
-.faq.ativo .faq-toggle{
-    background-color: #165502;
+.icone .linha{
+    background-color: darkgreen;
+    height: 2px;
+    width: 20px;
+    position: absolute;
+    top:10px;
+    left: 5px;
+    transition: transform 0.6s linear;
 }
 
+.icone .lin2{
+    top:auto;
+    bottom: 10px;
+}
+
+nav.ativo .icone .lin1{
+    transform: rotate(-765deg) translateY(5.5px);
+}
+nav.ativo .icone .lin2{
+    transform: rotate(765deg) translateY(-5.5px);
+}
+
+.copyR:hover{
+    color: darkgreen;
+}
 /*estilos do footer */
 
 #ident{
     font-size: 8pt;
     color: rgb(255, 196, 0);
     text-align: center;
-    border-bottom: 1px dashed;
+    border-top: 1px dashed;
     font-family:'lato',sans-serif;
     font-weight: 700;
+    position: absolute;
+    bottom: 10px;
 }
 
 
-#ident a{
-   color: #171a13;  /*cor dos links a preto*/
-   text-decoration: none;     /*retira o sublinhado dos links*/
-}
 
-#ident a:hover{
-    color: rgb(255, 196, 0);
-}
 
 
 
